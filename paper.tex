@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\newcommand{\D}{\Delta}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{C_n}
+\begin{document}
+\begin{center}
+{\Large\bfseries The sharp difference characteristic\\[3pt] of finite dihedral groups}\\[9pt]
+AI-assisted research note \quad $\cdot$ \quad 26 November 2026
+\end{center}
+\begin{abstract}
+A difference basis of a finite group represents every element as a quotient of two of its members. Banakh and Gavrylkiv asked whether the largest normalized difference size among dihedral groups is $8/\sqrt{22}$. We give an affirmative answer. Pairs of integer sets control the rotation and reflection cosets separately. Lifting each pair with a cyclic difference basis certifies an interval of group parameters. Sixty-nine such intervals and explicit witnesses for the remaining finite cases meet the published large-order bound. All finite checks use integer arithmetic.
+\end{abstract}
+\section{The extremal question}
+Write $D_{2n}=\langle r,s\mid r^n=s^2=1,\ srs=r^{-1}\rangle$, of order $2n$. Let $\D(G)$ be the least size of $X\subseteq G$ for which $XX^{-1}=G$. For the symmetries of a regular polygon, such an $X$ recovers every rotation and reflection as $xy^{-1}$. The normalization by $\sqrt{|G|}$ comes from $|XX^{-1}|\le |X|^2$.
+
+\textbf{Theorem.}\quad
+$\displaystyle \max_{n\ge1}\frac{\D(D_{2n})}{\sqrt{2n}}=\frac8{\sqrt{22}}.$
+
+Banakh and Gavrylkiv computed $\D(D_{22})=8$ and proved the required upper bound for $n\ge1\,212\,464$ \cite[Table 2 and Proposition 11]{BG}. Their Question 10 asks whether a smaller group parameter ever exceeds this value. We prove that a basis of size $K$ satisfying
+\begin{equation}11K^2\le64n\label{budget}\end{equation}
+exists for every $1\le n<1\,212\,464$. The extremum follows, with equality at $n=11$.
+
+Put $C_n=\Z/n\Z$. For $A,B\subseteq C_n$ use $X=\{r^a:a\in A\}\cup\{sr^b:b\in B\}$. Multiplication gives the rotation exponents $(A-A)\cup(B-B)$ and the reflection exponents $B-A$ in the convention $sr^j$. Since negation permutes $C_n$, the criterion is
+\begin{equation}
+(A-A)\cup(B-B)=C_n,\qquad A-B=C_n. \label{criterion}
+\end{equation}
+A cyclic basis used twice gives the familiar bound $2\D(C_n)$. Distinct choices of the two sets allow the same expenditure to cover a longer interval of parameters.
+
+\newpage
+\section{An interval from two integer sets}
+Take finite $U,V\subset\Z$. Suppose the union of their two internal difference sets contains $[-R,R]$, and $U-V$ contains $[L,H]$. All intervals here denote integers. Let $S\subseteq[0,d]$, $d<m$, represent every residue modulo $m$ by a difference. Set $g=m-1-d$ and $W=\min(2R,H-L)$.
+
+\textbf{Lifting lemma.}\quad For every $1\le n\le mW+2g+1$, reducing $mU+S$ and $mV+S$ modulo $n$ gives a pair satisfying \eqref{criterion}. Its total size is at most $(|U|+|V|)|S|$.
+
+\textit{Proof.} For integers $i\le j$ and $mi-g\le t\le mj+g$, pick $z\in S-S$ congruent to $t$ modulo $m$. Then $h=(t-z)/m$ lies in $[i,j]$. Indeed $h<i$ would imply $z\ge m-g=d+1$, and $h>j$ would imply $z\le-d-1$. Apply this observation to $[L,H]$ for cross differences. Apply it to $[-R,R]$ for rotations, choosing the color in which $h$ is realized. The two resulting intervals each contain at least $n$ consecutive integers. Reduction covers $C_n$ in both cases. The size estimate follows by counting the possible sums. \hfill$\square$
+
+\textbf{Templates.} Write $k=|U|+|V|$. For $k=4,5,6$ put $h=k-2$, $U=[0,h-1]$, $V=\{0,-h\}$. The cross differences contain $[0,2h-1]$ and internal differences contain $[-h,h]$, giving $W=2h-1$.
+
+For $k=8,9,10,11$ put $b=k-4$ and use
+\[
+ U=\{0,1,2b-1,2b\},\qquad -V=\{0,2,\ldots,2b-4\}\cup\{2b-3\}.
+\]
+Adding $\{0,1\}$ to $-V$ covers $[0,2b-2]$. A translate by $2b-1$ continues this interval through $4b-3$. The internal differences of $V$ contain the even values through $2b-4$ and the odd values through $2b-3$. The internal differences of $U$ add $2b-2,2b-1,2b$. Thus $W=4b-3$ is admissible.
+
+\textbf{Cyclic input.} For a prime power $q$, Singer's theorem \cite{Singer} gives a cyclic difference set of size $q+1$ modulo $m=q^2+q+1$. The $q+1$ gaps between consecutive marks contain $q^2$ unoccupied positions, so one gap contains at least $q$ of them. Translate the following mark to zero to obtain $g\ge q$. Table 1 gives shorter representatives for small $q$.
+
+Together with \eqref{budget}, a row $(k,q)$ therefore certifies the closed interval
+\begin{equation}
+\left[\left\lceil11k^2(q+1)^2/64\right\rceil,\ W(q^2+q+1)+2g+1\right]. \label{interval}
+\end{equation}
+For instance $k=11,q=5$ gives $W=25$, $g=13$, and $749\le n\le802$ using at most 66 elements.
+
+\newpage
+\section{The finite certificate}
+\textbf{Table 1.} Explicit choices of $S$ and the corresponding $g=m-1-\max S$. Each list can be checked by subtracting its entries modulo $m$.\\[3pt]
+{\small\begin{tabular}{r r p{0.76\linewidth}}
+$q$ & $g$ & $S$\\ \hline
+2 & 3 & 0, 1, 3 \\
+3 & 6 & 0, 2, 5, 6 \\
+4 & 9 & 0, 3, 4, 9, 11 \\
+5 & 13 & 0, 1, 8, 11, 13, 17 \\
+7 & 21 & 0, 7, 10, 16, 18, 30, 31, 35 \\
+8 & 27 & 0, 3, 9, 16, 20, 21, 35, 43, 45 \\
+9 & 35 & 0, 1, 6, 10, 23, 26, 34, 41, 53, 55 \\
+11 & 47 & 0, 9, 10, 17, 30, 42, 45, 56, 61, 79, 83, 85 \\
+13 & 55 & 0, 5, 28, 38, 41, 49, 50, 68, 75, 92, 107, 121, 123, 127 \\
+16 & 71 & 0, 5, 15, 34, 35, 42, 73, 75, 86, 89, 98, 134, 151, 155, 177, 183, 201 \\
+17 & 90 & 0, 2, 10, 22, 53, 56, 82, 83, 89, 98, 130, 148, 153, 167, 188, 192, 205, 216 \\
+\end{tabular}}
+
+\textbf{Table 2.} Prime powers used in \eqref{interval}, grouped by template. Use $g=q$ for every $q$ absent from Table 1.\\[3pt]
+{\small\begin{tabular}{r p{0.85\linewidth}}
+$k$ & $q$\\ \hline
+4 & 2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17 \\
+5 & 2, 4, 5, 8, 9, 11, 16, 17, 61, 81, 157 \\
+6 & 2, 8, 16 \\
+8 & 9, 13, 16, 17, 23, 64, 125 \\
+9 & 2, 11, 13, 16, 17, 23, 25, 27, 29, 31, 61, 67, 73, 79, 101, 131, 169, 223, 243 \\
+10 & 11, 16, 17, 19, 32, 37, 43, 47, 83, 107, 128, 167, 241 \\
+11 & 5, 8, 31, 128, 167 \\
+\end{tabular}}
+
+The union of the 69 intervals in Table 2 misses 107 integers below the published cutoff. Above 40 the omissions, written as inclusive ranges, are
+\[
+\begin{gathered}
+43,\quad 53\text{--}55,\quad 57\text{--}68,\quad83\text{--}98,\quad125,\\
+127\text{--}154,\quad215\text{--}222,\quad345\text{--}348 .
+\end{gathered}
+\]
+Table 3 supplies witnesses for these ranges. Table 2 of \cite{BG} settles $1\le n\le40$ independently. The companion certificate also supplies explicit sets for all forty. To reproduce the calculation, mark every integer in each interval \eqref{interval}, reduced to $[1,1\,212\,463]$. For each direct witness compute the two residue sets in \eqref{criterion}, check that both have cardinality $n$, check \eqref{budget}, and mark $n$. Every integer in the range is marked.
+
+\newpage
+\textbf{Table 3.} Direct certificates. In each row $A=[0,a-1]$ and the listed $B$ is reduced modulo each indicated $n$. A row applies to every integer between its endpoints.\\[4pt]
+{\small\begin{tabular}{l r p{0.72\linewidth}}
+$n$ & $a$ & $B$\\ \hline
+43 & 6 & 0, 4, 9, 15, 19, 25, 29, 32, 37 \\[3pt]
+53--55 & 7 & 0, 6, 12, 18, 25, 26, 33, 36, 42, 48 \\[3pt]
+57--63 & 7 & 0, 7, 13, 19, 22, 29, 30, 37, 44, 50, 56 \\[3pt]
+64--68 & 7 & 0, 4, 11, 18, 23, 30, 32, 38, 44, 48, 54, 61 \\[3pt]
+83 & 8 & 0, 8, 12, 18, 21, 29, 35, 43, 51, 55, 63, 70, 75 \\[3pt]
+84--90 & 8 & 0, 8, 16, 23, 27, 32, 36, 42, 49, 53, 61, 67, 75, 82 \\[3pt]
+91--98 & 9 & 0, 1, 10, 16, 25, 30, 37, 43, 48, 56, 65, 74, 82, 89 \\[3pt]
+125 & 9 & 0, 9, 15, 22, 29, 36, 42, 48, 55, 58, 66, 74, 83, 89, 98, 107, 116 \\[3pt]
+127--134 & 10 & 0, 10, 20, 29, 37, 40, 48, 57, 66, 72, 80, 90, 96, 102, 111, 121, 124 \\[3pt]
+135--145 & 10 & 0, 9, 16, 25, 35, 45, 55, 61, 66, 73, 81, 88, 95, 103, 112, 122, 132, 135 \\[3pt]
+146--153 & 10 & 0, 4, 10, 20, 30, 39, 46, 55, 57, 67, 72, 80, 89, 95, 103, 113, 123, 133, 143 \\[3pt]
+154 & 11 & 1, 11, 14, 23, 34, 39, 49, 60, 71, 81, 92, 94, 105, 111, 119, 129, 136, 146 \\[3pt]
+215--222 & 12 & 0, 12, 20, 30, 35, 43, 54, 62, 74, 85, 96, 103, 114, 125, 136, 142, 152, 161, 173, 185, 197, 206, 211 \\[3pt]
+345--348 & 15 & 0, 15, 29, 43, 57, 68, 80, 84, 97, 109, 124, 132, 147, 152, 164, 168, 183, 198, 213, 228, 240, 246, 260, 274, 285, 298, 311, 325, 333 \\[3pt]
+\end{tabular}}
+
+\textbf{Sharpness check.} At $n=11$ any basis with at most seven elements must have $|A||B|\ge11$. Up to exchange this forces sizes three and four. Of the $\binom{11}{3}\binom{11}{4}=54\,450$ labeled choices, 605 cover the reflection coset and none of those cover every rotation. For eight elements take $A=\{0,1,2,3\}$ and $B=\{0,1,4,7\}$. This independently recovers the equality case of \cite{BG}.
+
+\textbf{Reproducibility and provenance.} The accompanying \texttt{verify.py} reads \texttt{certificate.json} and rechecks all finite claims with the Python standard library. The templates and witnesses were developed with AI assistance, including heuristic search for direct witnesses. Verification requires only the displayed set operations. This version is a preprint without external peer review.\\
+\url{https://github.com/dkR10528/dihedral-difference-bases}
+
+\begin{thebibliography}{9}\small
+\bibitem{BG} T. Banakh and V. Gavrylkiv, Difference bases in dihedral groups, \textit{Int. J. Group Theory} \textbf{8} (2019), no. 1, 43--50. \href{https://doi.org/10.22108/ijgt.2017.21612}{doi:10.22108/ijgt.2017.21612}.
+\bibitem{Singer} J. Singer, A theorem in finite projective geometry and some applications to number theory, \textit{Trans. Amer. Math. Soc.} \textbf{43} (1938), 377--385. \href{https://doi.org/10.1090/S0002-9947-1938-1501951-4}{doi:10.1090/S0002-9947-1938-1501951-4}.
+\end{thebibliography}
+\end{document}
