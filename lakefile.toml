@@ -1,0 +1,8 @@
+name = "dihedralCertificate"
+version = "1.0.0"
+defaultTargets = ["Dihedral"]
+
+[[lean_lib]]
+name = "Dihedral"
+roots = ["Dihedral", "Lift", "GroupModel", "Sharp", "Finite", "Dihedral.Blocks"]
+
